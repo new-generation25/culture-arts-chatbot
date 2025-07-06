@@ -45,7 +45,7 @@ export default function Home() {
       } else {
         setMessages(prev => [...prev, { role: 'assistant', content: "답변을 받아오지 못했습니다." }]);
       }
-    } catch (e) {
+    } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "서버 오류가 발생했습니다." }]);
     }
     setLoading(false);
