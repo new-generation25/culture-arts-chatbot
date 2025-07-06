@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
     const data = await response.json();
     const answer = data.choices?.[0]?.message?.content || '답변을 생성하지 못했습니다.';
     return NextResponse.json({ answer });
-  } catch (err) {
+  } catch {
     return NextResponse.json({ error: '서버 오류가 발생했습니다.' }, { status: 500 });
   }
 } 
