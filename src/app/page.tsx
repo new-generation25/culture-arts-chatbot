@@ -67,10 +67,10 @@ export default function Home() {
   return (
     <div style={{ minHeight: '100vh', width: '100vw', background: '#f4f6fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ width: '70vw', maxWidth: 900, minWidth: 320, height: '80vh', maxHeight: 800, minHeight: 400, background: '#fff', borderRadius: 18, boxShadow: '0 4px 32px rgba(0,0,0,0.10)', padding: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        <div style={{ padding: '28px 0 16px 0', textAlign: 'center', borderBottom: '1px solid #e5e7eb', background: '#f8fafc' }}>
-          <h2 style={{ fontWeight: 800, fontSize: 26, letterSpacing: -1, margin: 0 }}>MAX의 기획 도우미</h2>
+        <div style={{ padding: '28px 0 16px 0', textAlign: 'center', borderBottom: '1px solid #e5e7eb', background: '#FEE500' }}>
+          <h2 style={{ fontWeight: 800, fontSize: 26, letterSpacing: -1, margin: 0, color: '#222' }}>MAX의 기획 도우미</h2>
         </div>
-        <div style={{ flex: 1, overflowY: 'auto', padding: '32px 24px 16px 24px', background: '#fff' }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '32px 24px 16px 24px', background: '#fff', backgroundImage: 'url(/beach_bg.png)', backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }}>
           {messages.map((msg, idx) => (
             <div
               key={idx}
@@ -109,7 +109,7 @@ export default function Home() {
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="메시지를 입력하세요..."
-            style={{ flex: 1, padding: '14px 16px', borderRadius: 20, border: "1.5px solid #F1F0F0", fontSize: 16, outline: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.03)' }}
+            style={{ flex: 1, padding: '14px 16px', borderRadius: 20, border: "1.5px solid #F1F0F0", fontSize: 16, outline: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.03)', color: '#222', background: '#fff' }}
             disabled={loading}
           />
           <button
