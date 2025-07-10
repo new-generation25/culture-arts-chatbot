@@ -1,3 +1,7 @@
+# MAX의 기획 도우미
+
+당신의 아이디어와 생각을 정리하는데 도움을 드리는 AI 기획 도우미입니다.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started

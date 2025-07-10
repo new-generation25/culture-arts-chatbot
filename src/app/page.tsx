@@ -61,7 +61,7 @@ export default function Home() {
     <div style={{ minHeight: '100vh', width: '100vw', background: '#f4f6fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <div style={{ width: '70vw', maxWidth: 900, minWidth: 320, height: '80vh', maxHeight: 800, minHeight: 400, background: '#fff', borderRadius: 18, boxShadow: '0 4px 32px rgba(0,0,0,0.10)', padding: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <div style={{ padding: '28px 0 16px 0', textAlign: 'center', borderBottom: '1px solid #e5e7eb', background: '#f8fafc' }}>
-          <h2 style={{ fontWeight: 800, fontSize: 26, letterSpacing: -1, margin: 0 }}>기획 도우미 챗봇</h2>
+          <h2 style={{ fontWeight: 800, fontSize: 26, letterSpacing: -1, margin: 0 }}>MAX의 기획 도우미</h2>
         </div>
         <div style={{ flex: 1, overflowY: 'auto', padding: '32px 24px 16px 24px', background: '#f8fafc' }}>
           {messages.map((msg, idx) => (
