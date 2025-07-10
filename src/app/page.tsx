@@ -22,10 +22,17 @@ export default function Home() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null); // 입력창 ref 추가
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, loading]);
+
+  useEffect(() => {
+    if (!loading) {
+      inputRef.current?.focus(); // 답변 후 입력창에 커서 유지
+    }
+  }, [loading]);
 
   const handleSend = async () => {
     if (input.trim() === "" || loading) return;
@@ -63,28 +70,28 @@ export default function Home() {
         <div style={{ padding: '28px 0 16px 0', textAlign: 'center', borderBottom: '1px solid #e5e7eb', background: '#f8fafc' }}>
           <h2 style={{ fontWeight: 800, fontSize: 26, letterSpacing: -1, margin: 0 }}>MAX의 기획 도우미</h2>
         </div>
-        <div style={{ flex: 1, overflowY: 'auto', padding: '32px 24px 16px 24px', background: '#f8fafc' }}>
+        <div style={{ flex: 1, overflowY: 'auto', padding: '32px 24px 16px 24px', background: '#fff' }}>
           {messages.map((msg, idx) => (
             <div
               key={idx}
               style={{
                 display: 'flex',
                 justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
-                marginBottom: 18
+                marginBottom: 10
               }}
             >
               <div
                 style={{
-                  background: msg.role === 'user' ? '#2563eb' : '#e0e7ef',
-                  color: msg.role === 'user' ? '#fff' : '#222',
-                  borderRadius: 16,
-                  padding: '14px 18px',
+                  background: msg.role === 'user' ? '#FFEB3B' : '#F1F0F0', // 카카오톡 노란색/회색
+                  color: '#222',
+                  borderRadius: msg.role === 'user' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
+                  padding: '12px 16px',
                   maxWidth: '70%',
-                  whiteSpace: 'pre-line',
                   fontSize: 16,
                   lineHeight: 1.7,
-                  boxShadow: msg.role === 'user' ? '0 2px 8px rgba(37,99,235,0.08)' : '0 2px 8px rgba(0,0,0,0.04)',
+                  boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
                   wordBreak: 'break-word',
+                  border: msg.role === 'user' ? '1.5px solid #FEE500' : '1.5px solid #E0E0E0',
                 }}
               >
                 {formatParagraphs(msg.content)}
@@ -94,19 +101,20 @@ export default function Home() {
           {loading && <div style={{ color: '#888', textAlign: 'center', margin: '12px 0' }}>AI 답변 생성 중...</div>}
           <div ref={messagesEndRef} />
         </div>
-        <div style={{ padding: '18px 24px', borderTop: '1px solid #e5e7eb', background: '#f8fafc', display: 'flex', gap: 10 }}>
+        <div style={{ padding: '18px 24px', borderTop: '1px solid #e5e7eb', background: '#fff', display: 'flex', gap: 10 }}>
           <input
+            ref={inputRef} // 입력창에 ref 연결
             type="text"
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="메시지를 입력하세요..."
-            style={{ flex: 1, padding: '14px 16px', borderRadius: 10, border: "1px solid #cbd5e1", fontSize: 16, outline: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.03)' }}
+            style={{ flex: 1, padding: '14px 16px', borderRadius: 20, border: "1.5px solid #F1F0F0", fontSize: 16, outline: 'none', boxShadow: '0 1px 2px rgba(0,0,0,0.03)' }}
             disabled={loading}
           />
           <button
             onClick={handleSend}
-            style={{ padding: "0 28px", borderRadius: 10, background: loading ? '#a5b4fc' : "#2563eb", color: "#fff", border: "none", fontWeight: 700, fontSize: 16, height: 48, cursor: loading ? 'not-allowed' : 'pointer', transition: 'background 0.2s' }}
+            style={{ padding: "0 28px", borderRadius: 20, background: loading ? '#FEE500' : "#FEE500", color: "#222", border: "none", fontWeight: 700, fontSize: 16, height: 48, cursor: loading ? 'not-allowed' : 'pointer', transition: 'background 0.2s' }}
             disabled={loading}
           >
             {loading ? '전송 중...' : '전송'}
